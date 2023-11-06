@@ -20,6 +20,10 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
         <ServiceWorkerRegister />

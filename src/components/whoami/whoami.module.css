@@ -1,0 +1,132 @@
+.whoami-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    
+}
+
+@media screen and (min-width: 768px) {
+    .whoami-container {
+      flex-direction: row;
+    }
+}
+
+.whoami-container-stacks {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+    flex:1;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.whoami-container-about {
+    display: flex;
+    flex-direction: column;
+    flex:2;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    min-height: 60%;
+}
+
+
+@media screen and (min-width: 768px) {
+    .whoami-container-about {
+        min-height: 100vh;
+    }
+}
+
+.whoami-container-photo{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    flex:1;
+}
+
+.whoami-container-courses{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex:3;
+    width: 100%;
+    flex-direction: column;
+ 
+}
+
+.whoami-container-talks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.whoami-container-footer {
+    display: flex;
+    align-items: center;
+    color: white;
+    position: absolute;
+    justify-content: flex-end;
+    bottom: 20px;
+    font-weight: 100;
+}
+
+
+.test {
+    background: #713FC2;
+    background: linear-gradient(to left, #713FC2 0%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.whoami-container-stacks__img {
+    border-radius: 100%;
+    object-fit: cover;
+    position: absolute;
+
+}
+
+.whoami-container-stacks__img__react {
+    border-radius: 100%;
+    object-fit:fill;
+    position: absolute;
+    top: -30px;
+    right: -40px;
+}
+.whoami-container-stacks__img__angular {
+    border-radius: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: -30px;
+    left: -40px;
+}
+
+.whoami-container-stacks__img__typescript{
+    border-radius: 100%;
+    object-fit: cover;
+    position: absolute;
+    bottom: -30px;
+    left: -40px;
+}
+
+.whoami-container-stacks__img__javascript{
+    border-radius: 100%;
+    object-fit: cover;
+    position: absolute;
+    bottom: -30px;
+    right: -40px;
+}
+
+
+
+.whoami-container-stacks__img__me {
+    border-radius: 100%;
+    object-fit: cover;
+}
+
