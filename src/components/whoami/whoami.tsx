@@ -56,7 +56,7 @@ export default component$(() => {
           <img
             width="150"
             height="150"
-            src={"./me.jpg"}
+            src={"./fabio.jpg"}
             class={styles["whoami-container-stacks__img__me"]}
           />
           <img
