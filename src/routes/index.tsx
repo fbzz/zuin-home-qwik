@@ -1,11 +1,4 @@
-import {
-  component$,
-  $,
-  QwikUIEvent,
-  useVisibleTask$,
-  useSignal,
-  useOnWindow,
-} from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Fullpage from "~/components/fullpage/fullpage";
 import Whoami from "~/components/whoami/whoami";
