@@ -1,8 +1,14 @@
-import { component$ } from "@builder.io/qwik";
+import { $, component$, useSignal } from "@builder.io/qwik";
 import styles from "./whoami.module.css";
 import CourseCard from "../course-card/course-card";
 
 export default component$(() => {
+  const counter = useSignal(0);
+
+  const addValueToCounter = $(() => {
+    counter.value++;
+  });
+
   return (
     <div class={styles["whoami-container"]}>
       <div
@@ -89,14 +95,11 @@ export default component$(() => {
           <CourseCard></CourseCard>
         </div>
         <div id="my_talks" class={styles["whoami-container-talks"]}>
-          <h4>Talks</h4>
-          <iframe
-            width="500"
-            height="255"
-            src="https://www.youtube.com/embed/Q2vaIKJwYeg?si=99CotsNfg4afNJBb"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          ></iframe>
+          <div>
+            <button onClick$={addValueToCounter}>
+              Click me for testing qwik! - {counter.value}
+            </button>
+          </div>
         </div>
       </div>
     </div>
