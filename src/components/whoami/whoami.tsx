@@ -2,6 +2,14 @@ import { component$ } from "@builder.io/qwik";
 import styles from "./whoami.module.css";
 import CourseCard from "../course-card/course-card";
 import { Link } from "@builder.io/qwik-city";
+import Github from "./../../media/github.svg?jsx";
+import Instagram from "./../../media/instagram.svg?jsx";
+import Meetup from "./../../media/meetup.svg?jsx";
+import QwikIcon from "./../../media/favicon.svg?jsx";
+import Me from "./../../media/fabio.jpg?jsx";
+import React from "./../../media/react.svg?jsx";
+import Angular from "./../../media/angular.svg?jsx";
+import Typescript from "./../../media/typescript.svg?jsx";
 
 export default component$(() => {
   return (
@@ -17,34 +25,13 @@ export default component$(() => {
         <h4>Software Engineer, Tech Speaker, Sharer</h4>
         <h4>📍 Porto, Portugal</h4>
         <div>
-          <img
-            width={35}
-            height={35}
-            src={"./github.svg"}
-            style={{ "margin-left": "5px" }}
-          />
-          <img
-            width={35}
-            height={35}
-            src={"./instagram.svg"}
-            style={{ "margin-left": "5px" }}
-          />
-          <img
-            width={35}
-            height={35}
-            src={"./meetup.svg"}
-            style={{ "margin-left": "5px" }}
-          />
+          <Github class={styles["whoami-contact-icons"]} />
+          <Instagram class={styles["whoami-contact-icons"]} />
+          <Meetup class={styles["whoami-contact-icons"]} />
         </div>
         <div class={[styles["whoami-container-footer"]]}>
           Made with 💜 using{"    "}
-          <img
-            width={20}
-            height={20}
-            alt="Qwik logo"
-            src={"./favicon.svg"}
-            style={{ "margin-left": "5px" }}
-          />
+          <QwikIcon class={styles["whoami-qwik-icon"]} />
         </div>
       </div>
       <div class={[styles["whoami-container-stacks"]]}>
@@ -54,35 +41,11 @@ export default component$(() => {
             styles["whoami-container-photo"],
           ]}
         >
-          <img
-            width="150"
-            height="150"
-            src={"./fabio.jpg"}
-            class={styles["whoami-container-stacks__img__me"]}
-          />
-          <img
-            width="75"
-            height="75"
-            src={"./react.svg"}
-            class={styles["whoami-container-stacks__img__react"]}
-          />
-          <img
-            width="75"
-            height="75"
-            src={"./angular.svg"}
-            class={styles["whoami-container-stacks__img__angular"]}
-          />
-          <img
-            width="75"
-            height="75"
-            src={"./typescript.svg"}
+          <Me class={styles["whoami-container-stacks__img__me"]} />
+          <React class={styles["whoami-container-stacks__img__react"]} />
+          <Angular class={styles["whoami-container-stacks__img__angular"]} />
+          <Typescript
             class={styles["whoami-container-stacks__img__typescript"]}
-          />
-          <img
-            width="75"
-            height="75"
-            src={"./js.svg"}
-            class={styles["whoami-container-stacks__img__javascript"]}
           />
         </div>
         <div class={styles["whoami-container-courses"]}>

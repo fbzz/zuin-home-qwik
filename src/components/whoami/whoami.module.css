@@ -3,12 +3,12 @@
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
-    
+
 }
 
 @media screen and (min-width: 768px) {
     .whoami-container {
-      flex-direction: row;
+        flex-direction: row;
     }
 }
 
@@ -18,7 +18,7 @@
     justify-items: center;
     align-items: center;
     background-color: white;
-    flex:1;
+    flex: 1;
     padding: 25px;
     box-sizing: border-box;
 }
@@ -26,7 +26,7 @@
 .whoami-container-about {
     display: flex;
     flex-direction: column;
-    flex:2;
+    flex: 2;
     justify-content: center;
     align-items: center;
     font-weight: 900;
@@ -40,24 +40,24 @@
     }
 }
 
-.whoami-container-photo{
+.whoami-container-photo {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
-    flex:1;
+    flex: 1;
 }
 
-.whoami-container-courses{
+.whoami-container-courses {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex:3;
+    flex: 3;
     width: 100%;
     flex-direction: column;
- 
+
 }
 
 .whoami-container-talks {
@@ -94,33 +94,42 @@
 
 .whoami-container-stacks__img__react {
     border-radius: 100%;
-    object-fit:fill;
+    object-fit: fill;
     position: absolute;
     top: -30px;
     right: -40px;
+    width: 75px;
+    height: 75px;
 }
+
 .whoami-container-stacks__img__angular {
     border-radius: 100%;
     object-fit: cover;
     position: absolute;
     top: -30px;
     left: -40px;
+    width: 75px;
+    height: 75px;
 }
 
-.whoami-container-stacks__img__typescript{
+.whoami-container-stacks__img__typescript {
     border-radius: 100%;
     object-fit: cover;
     position: absolute;
     bottom: -30px;
     left: -40px;
+    width: 75px;
+    height: 75px;
 }
 
-.whoami-container-stacks__img__javascript{
+.whoami-container-stacks__img__javascript {
     border-radius: 100%;
     object-fit: cover;
     position: absolute;
     bottom: -30px;
     right: -40px;
+    width: 75px;
+    height: 75px;
 }
 
 
@@ -128,5 +137,19 @@
 .whoami-container-stacks__img__me {
     border-radius: 100%;
     object-fit: cover;
+    width: 150px;
+    height: 150px;
 }
 
+.whoami-contact-icons {
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+}
+
+
+.whoami-qwik-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}

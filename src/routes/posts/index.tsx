@@ -37,7 +37,6 @@ const retrieveFirstFigureFromEachPostAndFormat = (
   items: any
 ): ArticleCardProps[] => {
   const articles = items.map((post: Article) => {
-    console.log(post);
     const content: string = post.content_encoded;
     const figure = extractFirstFigure(content);
     const imageSrc = extractSrcPaths(figure);
@@ -79,13 +78,12 @@ export default component$(() => {
   });
 
   return (
-    <div class="container ">
+    <div class="container">
       <h2 class="animate__animated animate__zoomIn">My Articles</h2>
-      <div class="posts__container">
-        {mediumPosts.value.map((article, index) => {
-          return <ArticleCard {...article} key={index} />;
-        })}
-      </div>
+
+      {mediumPosts.value.map((article, index) => {
+        return <ArticleCard {...article} key={index} />;
+      })}
     </div>
   );
 });

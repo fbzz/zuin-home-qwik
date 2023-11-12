@@ -20,11 +20,21 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap');
+        </style>
+
         <link rel="manifest" href="/manifest.json" />
+
         <RouterHead />
         <ServiceWorkerRegister />
       </head>

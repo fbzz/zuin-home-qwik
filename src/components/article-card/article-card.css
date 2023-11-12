@@ -2,7 +2,8 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    width: 650px;
+    width: 100%;
+    justify-content: space-evenly;
     position: relative;
     max-width: 800px;
     margin: auto;
@@ -10,15 +11,44 @@
     box-shadow: 0px 7px 15px var(--qwik-dark-purple);
     padding: 25px;
     border-radius: 25px;
-    height: 200px;
+    max-height: 200px;
 
     box-sizing: border-box;
     margin: 1rem 0px;
     color: black;
     transition: transform 1s ease;
-    animation: zoomIn;
-    animation-duration: 0.5s;
 
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        width: 80%;
+        min-height: 200px;
+        max-height: 200px;
+    }
+
+    .card:hover {
+        box-shadow: 17px 17px 35px var(--qwik-dark-purple);
+        transform: scale(2.1);
+        z-index: 10;
+    }
+
+    .card__title {
+        font-size: 16px !important;
+    }
+
+    .card__article__preview {
+        margin-top: 10px !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5rem !important;
+    }
+
+    .card__preview {
+        left: -40px !important;
+        top: 20px;
+        max-width: 190px !important;
+        max-height: 160px !important;
+    }
 }
 
 .card:hover {
@@ -27,19 +57,24 @@
     z-index: 10;
 }
 
+.card:active {
+    transform: scale(1.2);
+}
+
 .card__preview {
-    left: -40px;
+    top: 20px;
     position: absolute;
     display: block;
     border-radius: 20px;
     transition: all .3s;
     box-shadow: 0px 10px 25px var(--qwik-light-purple);
     filter: grayscale(20%);
-    z-index: 999;
-    top: 20px;
-    max-width: 190px;
-    max-height: 160px;
+    z-index: 2;
     cursor: pointer;
+
+    left: -20px;
+    max-width: 170px;
+    max-height: 160px;
 }
 
 .card__preview figure {
@@ -50,23 +85,24 @@
 
 .card__title {
     margin-left: 140px;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
     color: var(--qwik-dark-purple);
     cursor: pointer;
+
 }
 
 .card__article__preview {
-
     margin-left: 140px;
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 10px;
+    margin-top: 3px;
     color: black;
     white-space-collapse: break-spaces;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 20.5px;
-    font-weight: 600;
+    line-height: 16.5px;
+    font-weight: 300;
+    font-family: "Merriweather";
 }
 
 .post__container {
