@@ -7,6 +7,11 @@ import type { ArticleCardProps } from "~/components/article-card";
 
 const MEDIUM_PROFILE = `https://medium.com/feed/@fabiozuin`;
 
+interface FixedRssItem extends Item {
+  "content:encoded": string;
+  "content:encodedSnippet": string;
+}
+
 const extractSrcPaths = (input: string): string[] => {
   const srcRegex = /src\s*=\s*["'](.*?)["']/g;
 
@@ -29,16 +34,17 @@ const extractFirstFigure = (encodedArticle: string) => {
 };
 
 const retrieveFirstFigureFromEachPostAndFormat = (
-  items: T & Item[]
+  items: Item[]
 ): ArticleCardProps[] => {
-  const articles = items.map((post: T & Item) => {
-    const content: string = post["content:encoded"];
+  const articles = items.map((post: any) => {
+    const fixedPost = post as FixedRssItem;
+    const content: string = fixedPost["content:encoded"];
     const figure = extractFirstFigure(content);
     const imageSrc = extractSrcPaths(figure);
     return {
       article: {
         ...post,
-        ...{ content: { encodedSnippet: post["content:encodedSnippet"] } },
+        ...{ content: { encodedSnippet: fixedPost["content:encodedSnippet"] } },
       },
       imageSrc: imageSrc[0],
     };
