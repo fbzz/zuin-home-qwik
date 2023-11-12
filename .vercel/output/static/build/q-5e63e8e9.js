@@ -1,0 +1,1 @@
+import{n as t,h as e,_ as i}from"./q-0b4f0b7d.js";const s=t(e(()=>i(()=>import("./q-4299d4f1.js"),["build/q-4299d4f1.js","build/q-0b4f0b7d.js"]),"s_xYL1qOwPyDI")),n={title:"💻 Zuin ",meta:[{name:"description",content:"Qwik site description"}]};export{s as default,n as head};

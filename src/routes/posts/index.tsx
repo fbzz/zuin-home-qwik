@@ -1,10 +1,15 @@
-import { component$, useSignal, useStylesScoped$ } from "@builder.io/qwik";
+import {
+  component$,
+  useStylesScoped$,
+  useSignal,
+  useTask$,
+} from "@builder.io/qwik";
 import scoped from "./posts.css?inline";
 import type { DocumentHead } from "@builder.io/qwik-city";
-
 import { ArticleCard } from "~/components/article-card/article-card";
-import type { ArticleCardProps } from "~/components/article-card";
-/*
+import type { Article, ArticleCardProps } from "~/components/article-card";
+import { RssCustomParser } from "./rss-parser";
+
 const MEDIUM_PROFILE = `https://medium.com/feed/@fabiozuin`;
 
 const extractSrcPaths = (input: string): string[] => {
@@ -32,13 +37,14 @@ const retrieveFirstFigureFromEachPostAndFormat = (
   items: any
 ): ArticleCardProps[] => {
   const articles = items.map((post: Article) => {
-    const content: string = post.content;
+    console.log(post);
+    const content: string = post.content_encoded;
     const figure = extractFirstFigure(content);
     const imageSrc = extractSrcPaths(figure);
     return {
       article: {
         ...post,
-        ...{ content: { encodedSnippet: post.content } },
+        content_encoded: sanitizeContent(post.content_encoded),
       },
       imageSrc: imageSrc[0],
     };
@@ -46,19 +52,31 @@ const retrieveFirstFigureFromEachPostAndFormat = (
   return articles;
 };
 
+const sanitizeContent = (content: string) => {
+  const regexToReplaceClosingTags = /<\/(p|h1|h2|h3|h4|figcaption)>/g;
+  const regexToRemoveTags = /(<([^>]+)>)/gi;
+  return content
+    .replace(regexToReplaceClosingTags, "\n")
+    .replace(regexToRemoveTags, "");
+};
+
 export const fetchMediumPosts = async () => {
   const res = await RssCustomParser(MEDIUM_PROFILE);
-  return retrieveFirstFigureFromEachPostAndFormat(res!.items);
-}; */
+  try {
+    return retrieveFirstFigureFromEachPostAndFormat(res!.items);
+  } catch (e) {
+    return [];
+  }
+};
 
 export default component$(() => {
   useStylesScoped$(scoped);
 
   const mediumPosts = useSignal<ArticleCardProps[]>([]);
 
-  /* useTask$(async () => {
+  useTask$(async () => {
     mediumPosts.value = await fetchMediumPosts();
-  });*/
+  });
 
   return (
     <div class="container ">

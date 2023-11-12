@@ -1,0 +1,1 @@
+import{S as r,j as l,E as p}from"./q-0b4f0b7d.js";const a={"fullpage-wrapper":"_fullpage-wrapper_1tajn_1"},e=()=>r("div",null,{class:a["fullpage-wrapper"]},l(p,null,3,"Uq_0"),1,"Uq_1");export{e as s_7fpCeqgbmcA};
