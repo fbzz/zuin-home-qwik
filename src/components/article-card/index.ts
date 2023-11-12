@@ -3,10 +3,7 @@ export interface Article {
   title: string;
   link: string;
   pubDate: string;
-  content: {
-    encoded: string;
-    encodedSnippet: string;
-  };
+  content_encoded: string;
   dcCreator: string;
   guid: string;
   categories: string[];

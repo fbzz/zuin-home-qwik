@@ -1,9 +1,14 @@
-import { component$, useStylesScoped$, $ } from "@builder.io/qwik";
+import {
+  component$,
+  useStylesScoped$,
+  useSignal,
+  useTask$,
+} from "@builder.io/qwik";
 import scoped from "./posts.css?inline";
-import { DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
-import Parser, { Item } from "rss-parser";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import { ArticleCard } from "~/components/article-card/article-card";
-import type { ArticleCardProps } from "~/components/article-card";
+import type { Article, ArticleCardProps } from "~/components/article-card";
+import { RssCustomParser } from "./rss-parser";
 
 const MEDIUM_PROFILE = `https://medium.com/feed/@fabiozuin`;
 
@@ -29,16 +34,17 @@ const extractFirstFigure = (encodedArticle: string) => {
 };
 
 const retrieveFirstFigureFromEachPostAndFormat = (
-  items: T & Item[]
+  items: any
 ): ArticleCardProps[] => {
-  const articles = items.map((post: T & Item) => {
-    const content: string = post["content:encoded"];
+  const articles = items.map((post: Article) => {
+    console.log(post);
+    const content: string = post.content_encoded;
     const figure = extractFirstFigure(content);
     const imageSrc = extractSrcPaths(figure);
     return {
       article: {
         ...post,
-        ...{ content: { encodedSnippet: post["content:encodedSnippet"] } },
+        content_encoded: sanitizeContent(post.content_encoded),
       },
       imageSrc: imageSrc[0],
     };
@@ -46,16 +52,31 @@ const retrieveFirstFigureFromEachPostAndFormat = (
   return articles;
 };
 
-export const useFetchMediumPosts = routeLoader$(async () => {
-  const parser = new Parser();
-  const res = await parser.parseURL(MEDIUM_PROFILE);
-  return retrieveFirstFigureFromEachPostAndFormat(res.items);
-});
+const sanitizeContent = (content: string) => {
+  const regexToReplaceClosingTags = /<\/(p|h1|h2|h3|h4|figcaption)>/g;
+  const regexToRemoveTags = /(<([^>]+)>)/gi;
+  return content
+    .replace(regexToReplaceClosingTags, "\n")
+    .replace(regexToRemoveTags, "");
+};
+
+export const fetchMediumPosts = async () => {
+  const res = await RssCustomParser(MEDIUM_PROFILE);
+  try {
+    return retrieveFirstFigureFromEachPostAndFormat(res!.items);
+  } catch (e) {
+    return [];
+  }
+};
 
 export default component$(() => {
   useStylesScoped$(scoped);
 
-  const mediumPosts = useFetchMediumPosts();
+  const mediumPosts = useSignal<ArticleCardProps[]>([]);
+
+  useTask$(async () => {
+    mediumPosts.value = await fetchMediumPosts();
+  });
 
   return (
     <div class="container ">

@@ -1,0 +1,1 @@
+import{S as n}from"./q-0b4f0b7d.js";const l={"card-container":"_card-container_1pe0g_1","pulse-black":"_pulse-black_1pe0g_1"},r=()=>n("div",null,{class:l["card-container"]},[n("h4",null,null,"Software Development Basics - Using Typescript",3,null),n("span",null,null,"Under Construction...",3,null)],3,"4P_0");export{r as s_nYMdLt9aaKE};

@@ -1,0 +1,1 @@
+import{S as i,a as s}from"./q-0b4f0b7d.js";const o=r=>i("img",null,{height:35,src:s(t=>`${t.icon}.svg`,[r]),style:{padding:"10px",cursor:"pointer"},width:35},null,3,"jd_0");export{o as s_5qKEvV08iWE};

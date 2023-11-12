@@ -22,7 +22,7 @@ export const ArticleCard = component$<ArticleCardProps>(
           {article.title}
         </span>
         <div class="card__article__preview">
-          {truncateCharacters(article.content.encodedSnippet)}
+          {truncateCharacters(article.content_encoded)}
         </div>
       </div>
     );
