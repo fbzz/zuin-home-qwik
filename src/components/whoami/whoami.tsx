@@ -10,6 +10,7 @@ import Me from "./../../media/fabio.jpg?jsx";
 import React from "./../../media/react.svg?jsx";
 import Angular from "./../../media/angular.svg?jsx";
 import Typescript from "./../../media/typescript.svg?jsx";
+import Javascript from "./../../media/js.svg?jsx";
 
 export default component$(() => {
   return (
@@ -47,6 +48,9 @@ export default component$(() => {
           <Typescript
             class={styles["whoami-container-stacks__img__typescript"]}
           />
+          <Javascript
+            class={styles["whoami-container-stacks__img__javascript"]}
+          ></Javascript>
         </div>
         <div class={styles["whoami-container-courses"]}>
           <h4>Courses</h4>
@@ -54,7 +58,7 @@ export default component$(() => {
         </div>
         <div id="my_talks" class={styles["whoami-container-talks"]}>
           <div>
-            <Link href="/posts">About (preferred)</Link>
+            <Link href="/posts">My Articles ✍️</Link>
           </div>
         </div>
       </div>
