@@ -6,18 +6,14 @@ import {
 } from "@builder.io/qwik";
 import scoped from "./posts.css?inline";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import type Item from "rss-parser";
 
-import Parser from "rss-parser";
+import { parse } from "rss-to-json";
+
 import { ArticleCard } from "~/components/article-card/article-card";
 import type { ArticleCardProps } from "~/components/article-card";
+import type { Article } from "./article";
 
 const MEDIUM_PROFILE = `https://medium.com/feed/@fabiozuin`;
-
-interface FixedRssItem extends Item {
-  "content:encoded": string;
-  "content:encodedSnippet": string;
-}
 
 const extractSrcPaths = (input: string): string[] => {
   const srcRegex = /src\s*=\s*["'](.*?)["']/g;
@@ -43,15 +39,14 @@ const extractFirstFigure = (encodedArticle: string) => {
 const retrieveFirstFigureFromEachPostAndFormat = (
   items: any
 ): ArticleCardProps[] => {
-  const articles = items.map((post: any) => {
-    const fixedPost = post as FixedRssItem;
-    const content: string = fixedPost["content:encoded"];
+  const articles = items.map((post: Article) => {
+    const content: string = post.content;
     const figure = extractFirstFigure(content);
     const imageSrc = extractSrcPaths(figure);
     return {
       article: {
         ...post,
-        ...{ content: { encodedSnippet: fixedPost["content:encodedSnippet"] } },
+        ...{ content: { encodedSnippet: post.content } },
       },
       imageSrc: imageSrc[0],
     };
@@ -60,8 +55,7 @@ const retrieveFirstFigureFromEachPostAndFormat = (
 };
 
 export const fetchMediumPosts = async () => {
-  const parser = new Parser();
-  const res = await parser.parseURL(MEDIUM_PROFILE);
+  const res = await parse(MEDIUM_PROFILE);
   return retrieveFirstFigureFromEachPostAndFormat(res.items);
 };
 
