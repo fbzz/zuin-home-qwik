@@ -17,7 +17,13 @@ export const ArticleCard = component$<ArticleCardProps>(
     return (
       <div class="card ">
         <Medium class="card__source" />
-        <img class="card__preview" src={imageSrc} width={190} height={160} />
+        <img
+          class="card__preview"
+          src={imageSrc}
+          width={190}
+          height={160}
+          onClick$={() => openArticle(article.link)}
+        />
         <span class="card__title" onClick$={() => openArticle(article.link)}>
           {article.title}
         </span>

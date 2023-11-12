@@ -1,10 +1,14 @@
-import { component$, useStylesScoped$ } from "@builder.io/qwik";
+import {
+  component$,
+  useSignal,
+  useStylesScoped$,
+  useTask$,
+} from "@builder.io/qwik";
 import scoped from "./posts.css?inline";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { routeLoader$ } from "@builder.io/qwik-city";
 import type Item from "rss-parser";
-// @ts-ignore
-import Parser from "https://esm.sh/rss-parser";
+
+import Parser from "rss-parser";
 import { ArticleCard } from "~/components/article-card/article-card";
 import type { ArticleCardProps } from "~/components/article-card";
 
@@ -55,16 +59,20 @@ const retrieveFirstFigureFromEachPostAndFormat = (
   return articles;
 };
 
-export const useFetchMediumPosts = routeLoader$(async () => {
+export const fetchMediumPosts = async () => {
   const parser = new Parser();
   const res = await parser.parseURL(MEDIUM_PROFILE);
   return retrieveFirstFigureFromEachPostAndFormat(res.items);
-});
+};
 
 export default component$(() => {
   useStylesScoped$(scoped);
 
-  const mediumPosts = useFetchMediumPosts();
+  const mediumPosts = useSignal<ArticleCardProps[]>([]);
+
+  useTask$(async () => {
+    mediumPosts.value = await fetchMediumPosts();
+  });
 
   return (
     <div class="container ">

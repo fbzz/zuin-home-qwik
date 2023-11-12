@@ -7,14 +7,12 @@ export default extendConfig(baseConfig, () => {
     build: {
       ssr: true,
       
+      
       rollupOptions: {
         input: ["src/entry.netlify-edge.tsx", "@qwik-city-plan"],
       },
       outDir: ".netlify/edge-functions/entry.netlify-edge",
     },
     plugins: [netlifyEdgeAdapter()],
-    ssr: {
-      external: ["rss-parser"]
-    }
   };
 });
