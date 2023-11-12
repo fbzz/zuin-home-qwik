@@ -1,14 +1,9 @@
-import { $, component$, useSignal } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import styles from "./whoami.module.css";
 import CourseCard from "../course-card/course-card";
+import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
-  const counter = useSignal(0);
-
-  const addValueToCounter = $(() => {
-    counter.value++;
-  });
-
   return (
     <div class={styles["whoami-container"]}>
       <div
@@ -96,9 +91,7 @@ export default component$(() => {
         </div>
         <div id="my_talks" class={styles["whoami-container-talks"]}>
           <div>
-            <button onClick$={addValueToCounter}>
-              Click me for testing qwik! - {counter.value}
-            </button>
+            <Link href="/posts">About (preferred)</Link>
           </div>
         </div>
       </div>

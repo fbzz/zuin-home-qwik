@@ -122,7 +122,7 @@ ul {
 /* BUTTONS -------------------------------------- */
 a.button,
 button {
-  background: var(--qwik-light-blue);
+  background: var(--qwik-dark-purple);
   border: none;
   border-radius: 8px;
   color: white;
