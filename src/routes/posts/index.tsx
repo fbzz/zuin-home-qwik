@@ -1,7 +1,10 @@
-import { component$, useStylesScoped$, $ } from "@builder.io/qwik";
+import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import scoped from "./posts.css?inline";
-import { DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
-import Parser, { Item } from "rss-parser";
+import type { DocumentHead } from "@builder.io/qwik-city";
+import { routeLoader$ } from "@builder.io/qwik-city";
+import type Item from "rss-parser";
+// @ts-ignore
+import Parser from "https://esm.sh/rss-parser";
 import { ArticleCard } from "~/components/article-card/article-card";
 import type { ArticleCardProps } from "~/components/article-card";
 
@@ -34,7 +37,7 @@ const extractFirstFigure = (encodedArticle: string) => {
 };
 
 const retrieveFirstFigureFromEachPostAndFormat = (
-  items: Item[]
+  items: any
 ): ArticleCardProps[] => {
   const articles = items.map((post: any) => {
     const fixedPost = post as FixedRssItem;
