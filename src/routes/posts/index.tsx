@@ -1,18 +1,10 @@
-import {
-  component$,
-  useSignal,
-  useStylesScoped$,
-  useTask$,
-} from "@builder.io/qwik";
+import { component$, useSignal, useStylesScoped$ } from "@builder.io/qwik";
 import scoped from "./posts.css?inline";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import { parse } from "rss-to-json";
-
 import { ArticleCard } from "~/components/article-card/article-card";
 import type { ArticleCardProps } from "~/components/article-card";
-import type { Article } from "./article";
-
+/*
 const MEDIUM_PROFILE = `https://medium.com/feed/@fabiozuin`;
 
 const extractSrcPaths = (input: string): string[] => {
@@ -55,18 +47,18 @@ const retrieveFirstFigureFromEachPostAndFormat = (
 };
 
 export const fetchMediumPosts = async () => {
-  const res = await parse(MEDIUM_PROFILE);
-  return retrieveFirstFigureFromEachPostAndFormat(res.items);
-};
+  const res = await RssCustomParser(MEDIUM_PROFILE);
+  return retrieveFirstFigureFromEachPostAndFormat(res!.items);
+}; */
 
 export default component$(() => {
   useStylesScoped$(scoped);
 
   const mediumPosts = useSignal<ArticleCardProps[]>([]);
 
-  useTask$(async () => {
+  /* useTask$(async () => {
     mediumPosts.value = await fetchMediumPosts();
-  });
+  });*/
 
   return (
     <div class="container ">
