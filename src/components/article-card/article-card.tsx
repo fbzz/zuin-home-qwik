@@ -15,7 +15,7 @@ export const ArticleCard = component$<ArticleCardProps>(
     });
 
     return (
-      <div class="card ">
+      <div class="card animate__animated animate__zoomIn">
         <Medium class="card__source" />
         <img
           class="card__preview"

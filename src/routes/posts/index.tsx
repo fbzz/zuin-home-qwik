@@ -1,11 +1,6 @@
-import {
-  component$,
-  useStylesScoped$,
-  useSignal,
-  useTask$,
-} from "@builder.io/qwik";
+import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import scoped from "./posts.css?inline";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { ArticleCard } from "~/components/article-card/article-card";
 import type { Article, ArticleCardProps } from "~/components/article-card";
 import { RssCustomParser } from "./rss-parser";
@@ -59,7 +54,7 @@ const sanitizeContent = (content: string) => {
     .replace(regexToRemoveTags, "");
 };
 
-export const fetchMediumPosts = async () => {
+export const useFetchMediumPosts = routeLoader$(async () => {
   const res = await RssCustomParser(MEDIUM_PROFILE);
 
   try {
@@ -68,16 +63,12 @@ export const fetchMediumPosts = async () => {
     console.log(e);
     return [];
   }
-};
+});
 
 export default component$(() => {
   useStylesScoped$(scoped);
 
-  const mediumPosts = useSignal<ArticleCardProps[]>([]);
-
-  useTask$(async () => {
-    mediumPosts.value = await fetchMediumPosts();
-  });
+  const mediumPosts = useFetchMediumPosts();
 
   return (
     <div class="container">

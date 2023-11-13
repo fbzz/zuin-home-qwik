@@ -58,7 +58,9 @@ export default component$(() => {
         </div>
         <div id="my_talks" class={styles["whoami-container-talks"]}>
           <div>
-            <Link href="/posts">My Articles ✍️</Link>
+            <Link href="/posts" prefetch>
+              My Articles ✍️
+            </Link>
           </div>
         </div>
       </div>
