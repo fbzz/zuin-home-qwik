@@ -6,3 +6,9 @@ command = "npm run build"
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
+    allowedHeaders = "*"
+    
+    [[redirects]]
+  from = "/feed/@fabiozuin"
+  to = "https://medium.com"
+  status = 200

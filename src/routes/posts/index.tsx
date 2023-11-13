@@ -61,9 +61,11 @@ const sanitizeContent = (content: string) => {
 
 export const fetchMediumPosts = async () => {
   const res = await RssCustomParser(MEDIUM_PROFILE);
+
   try {
     return retrieveFirstFigureFromEachPostAndFormat(res!.items);
   } catch (e) {
+    console.log(e);
     return [];
   }
 };

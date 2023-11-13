@@ -10,7 +10,15 @@ export default defineConfig(() => {
       headers: {
         "Cache-Control": "public, max-age=600",
       },
+    },
+    proxy: {
+      '/feed/@fabiozuin': {
+        target: 'https://medium.com',
+        changeOrigin: true,
+        secure: false,
+      }
     }
+    
   };
   
 });

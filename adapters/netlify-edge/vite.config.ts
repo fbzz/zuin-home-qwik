@@ -12,5 +12,12 @@ export default extendConfig(baseConfig, () => {
       outDir: ".netlify/edge-functions/entry.netlify-edge",
     },
     plugins: [netlifyEdgeAdapter()],
+    proxy: {
+      '/feed/@fabiozuin': {
+        target: 'https://medium.com',
+        changeOrigin: true,
+        secure: true,
+      }
+    }
   };
 });

@@ -4,6 +4,7 @@ export const RssCustomParser = async (url: string) => {
   if (!/(^http(s?):\/\/[^\s$.?#].[^\s]*)/i.test(url)) return null;
   try {
     const response = await fetch(url);
+    console.log(response);
     if (!response.ok) {
       throw new Error(`Failed to fetch data from ${url}`);
     }
