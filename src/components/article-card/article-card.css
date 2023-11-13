@@ -17,6 +17,8 @@
     margin: 1rem 0px;
     color: black;
     transition: transform 1s ease;
+    animation: zoomIn;
+    animation-duration: 0.5s;
 
 }
 
